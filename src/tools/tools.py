@@ -60,3 +60,53 @@ def get_matrix_df_idf(path):
 
     return tf, idf, documents_list
 
+def get_rr_ri_nr(path, recovered):
+    recovered_list = recovered_colection(path)
+    relevant_retrieved = 0
+    irrelevant_retrieved = 0
+
+    for item in recovered:
+        for element in item:
+            temp = (element[0], element[1])
+            try:
+                recovered_list.remove(temp)
+                relevant_retrieved += 1
+            except:
+                irrelevant_retrieved += 1
+
+    non_irrelevant_retrieved = len(recovered_list)
+    return relevant_retrieved, irrelevant_retrieved, non_irrelevant_retrieved
+
+def recovered_colection(path):
+
+    lines = read_file(path)
+    recovered_list = []
+
+    for line in lines:
+        temp = turn_line_to_words(line)
+        temp = list(temp.items())
+        recovered_list.append((int(temp[0][0]), int(temp[1][0])))
+
+    print(f'recovered_list = {recovered_list}\n')
+    return recovered_list
+
+def turn_line_to_words(line):
+    word_list,word = {},''
+
+    for item in line:
+        if (item == ' ' or item == '\n' or item == '\t') and len(word) > 0:
+            if word_list.get(word) == None:
+                word_list[word] = 1
+            else:
+                word_list[word] += 1
+            word = ''
+        elif item != ' ':
+            word += item
+
+    if len(word) > 0:
+        if word_list.get(word) == None:
+            word_list[word] = 1
+        else:
+            word_list[word] += 1
+
+    return word_list
