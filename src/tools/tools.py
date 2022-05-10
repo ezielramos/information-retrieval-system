@@ -50,34 +50,55 @@ def get_matrix_df_idf(path):
     lines = read_file(path)
     documents_words, documents_list, documents_count, documents_maximum = tokenize(lines)
 
-    print(f'documents_words = {documents_words}\n')
-    print(f'documents_list = {documents_list}\n')
-    print(f'documents_count = {documents_count}\n')
-    print(f'documents_maximum = {documents_maximum}\n')
+    # print(f'documents_words = {documents_words}\n')
+    # print(f'documents_list = {documents_list}\n')
+    # print(f'documents_count = {documents_count}\n')
+    # print(f'documents_maximum = {documents_maximum}\n')
 
     tf = get_matrix_tf(documents_list, documents_maximum)
     idf = get_matrix_idf(documents_list, documents_words, documents_count)
 
     return tf, idf, documents_list
 
-def get_rr_ri_nr(path, recovered):
-    recovered_list = recovered_colection(path)
-    relevant_retrieved = 0
-    irrelevant_retrieved = 0
+def get_rr_ri_nr_ni(path, recovered, total_doc):
+    # me falta los no recuperados e irrelevantes
+    recovered_list = get_recovered_collection(path)
+    non_recovered_list = get_non_recovered_collection(recovered, total_doc)
+    # print(f'recovered = {recovered[0]}\n')
+    # print(f'non_recovered_list = {non_recovered_list[0]}\n')
+    # print(f'suma = {len(recovered[1] + non_recovered_list[1])}\n')
+    # print(f'recovered_list = {recovered_list}\n')
+
+    rr,ri = 0,0
 
     for item in recovered:
-        for element in item:
-            temp = (element[0], element[1])
+        for query,doc,_ in item:
+            temp = (query, doc)
             try:
                 recovered_list.remove(temp)
-                relevant_retrieved += 1
+                rr += 1
             except:
-                irrelevant_retrieved += 1
+                ri += 1
 
-    non_irrelevant_retrieved = len(recovered_list)
-    return relevant_retrieved, irrelevant_retrieved, non_irrelevant_retrieved
+    nr = len(recovered_list)
+    ni = len(non_recovered_list)
+    # print(f'rr = {rr} , ri = {ri} , nr = {nr} , ni = {ni}\n')
+    return rr, ri, nr
 
-def recovered_colection(path):
+def get_non_recovered_collection(recovered, total_doc):
+
+    non_recovered_list = []
+
+    for item in recovered:
+        all_documents = [ i for i in range(1, total_doc+1) ]
+        for _,doc,_ in item:
+            if doc in all_documents:
+                all_documents.remove(doc)
+        non_recovered_list.append(all_documents.copy())
+
+    return non_recovered_list
+
+def get_recovered_collection(path):
 
     lines = read_file(path)
     recovered_list = []
@@ -87,7 +108,6 @@ def recovered_colection(path):
         temp = list(temp.items())
         recovered_list.append((int(temp[0][0]), int(temp[1][0])))
 
-    print(f'recovered_list = {recovered_list}\n')
     return recovered_list
 
 def turn_line_to_words(line):
