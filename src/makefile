@@ -23,6 +23,7 @@ install: ## Install the project dependencies
 
 clean: ## Remove temporary files
 	rm -rf tools/__pycache__/
+	rm -rf printer/__pycache__/
 	rm -rf evaluation_system/__pycache__/
 
 help: ## Show this help
