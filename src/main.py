@@ -1,55 +1,55 @@
-from tools.tools import *
-from tools.similarity import *
-from evaluation_system.precision_measurements import *
+from tools.analyser import *
 
-def documents_analyser(path):
+from printer.welcome import welcome
+from printer.app_info import app_info
+from printer.choose_collection import choose_collection
+from printer.developments_info import developments_info
 
-    tf, idf, documents_list = get_matrix_df_idf(path)
-    weight = get_matrix_weight(tf, idf, lambda x, y : x * y, documents_list)
+def get_query():
 
-    return weight
+    print('Imrima la consulta deseada:')
+    query = input()
+    return query
 
-def queries_analyser(path, a=0.5):
-    
-    tf, idf, _ = get_matrix_df_idf(path)
-    weight = get_matrix_weight(tf, idf, lambda x , y : y * ((a + (1 - a) * x)))
+def cran():
 
-    return weight
+    documents_path = 'collections/cran/cran.all'
+    queries_path = 'collections/cran/cran.qry'
+    answers_path = 'collections/cran/cran.rel'
 
-def answers_analyser(path, rank):
+    analyser(documents_path, queries_path, answers_path, 1400)
+    print()
 
-    rr, ri, nr = get_rr_ri_nr(path, rank)
+def cisi():
+    documents_path = 'collections/cisi/cisi.all'
+    queries_path = 'collections/cisi/cisi.qry'
+    answers_path = 'collections/cisi/cisi.rel'
 
-    precision = PrecisionMeasurements.GetPrecision(rr, ri)
-    recovered = PrecisionMeasurements.GetRecovered(rr, nr)
-    measure_f1 = PrecisionMeasurements.GetMearureF(precision, recovered, beta=1)
-
-    return precision, recovered, measure_f1
+    analyser(documents_path, queries_path, answers_path, 1460)
+    print()
 
 def main():
 
-    queries_path = 'collections/cran/cran.qry'
-    documents_path = 'collections/cran/cran.all'
-    answers_path = 'collections/cran/cranqrel'
+    while True:
 
-    documents_weight = documents_analyser(documents_path)
-    print(f'documents_weight = {documents_weight}\n')
+        option = welcome()
 
-    queries_weight = queries_analyser(queries_path)
-    print(f'queries_weight = {queries_weight}\n')
-    
-    rank = get_rank(queries_weight, documents_weight)
-    print(f'rank = {rank}\n')
-    
-    print_rank(rank)
-
-    precision, recovered, measure_f1 = answers_analyser(answers_path, rank)
-
-    print(f'precision = {precision}\n')
-    print(f'recobrado = {recovered}\n')
-    print(f'medida f1 = {measure_f1}\n')
-
-    print('DONE!!!')
+        if option == 1:
+            collection = choose_collection()
+            if collection == 1:
+                cran()
+            else:
+                cisi()
+        elif option == 2:
+            # query = get_query()
+            # process_query(query)
+            pass
+        elif option == 3:
+            developments_info()
+        elif option == 4:
+            app_info()
+        else:
+            return
 
 if __name__ == '__main__':
     main()
