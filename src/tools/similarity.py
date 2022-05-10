@@ -19,14 +19,12 @@ def get_similarity(vector_query, vector_document):
     norm_query = 0
     norm_document = 0
 
-    for item in vector_query:
-        if vector_document.get(item) != None:
-            numerador += vector_query[item] * vector_document[item]
-        norm_query += vector_query[item] ** 2
-    for item in vector_document:
-        norm_document += vector_document[item] ** 2
-
-    print(f'numerador = {numerador} , norm_query = {norm_query} , norm_document = {norm_document}\n')
+    for query in vector_query:
+        if vector_document.get(query) != None:
+            numerador += vector_query[query] * vector_document[query]
+        norm_query += vector_query[query] ** 2
+    for doc in vector_document:
+        norm_document += vector_document[doc] ** 2
 
     if (math.sqrt(norm_query) * math.sqrt(norm_document)) == 0:
         return 0
@@ -45,10 +43,8 @@ def get_rank(queries_weight, documents_weight):
                 if len(element[1]) == 0:
                     break
                 similarity = get_similarity(item, element[1])
-                print(f'similitud = {similarity}\n')
                 sim = relevance_function(similarity)
-                print(f'grado de similitud = {sim}\n')
-                if sim <= 5:
+                if sim < 5:
                     temp.append((cquery, element[0], sim))
             temp.sort(key=lambda x:x[2])
         rank.append(temp)
@@ -60,3 +56,5 @@ def print_rank(rankList):
         for element in item:
             if element[2] <= 5:
                 print('consulta = ' + str(element[0]) + ' documento = ' + str(element[1]) + ' similitud = ' + str(element[2]))
+
+    print()
