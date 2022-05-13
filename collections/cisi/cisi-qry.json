@@ -1,0 +1,62 @@
+{
+ "1": {
+  "id": "1",
+  "text": "What problems and concerns are there in making up descriptive titles? What difficulties are involved in automatically retrieving articles from approximate titles? What is the usual relevance of the content of articles to their titles?"
+ },
+ "2": {
+  "id": "2",
+  "text": "How can actually pertinent data, as opposed to references or entire articles themselves, be retrieved automatically in response to information requests?"
+ },
+ "3": {
+  "id": "3",
+  "text": "What is information science?  Give definitions where possible."
+ },
+ "4": {
+  "id": "4",
+  "text": "Image recognition and any other methods of automatically transforming printed text into computer-ready form."
+ },
+ "5": {
+  "id": "5",
+  "text": "What special training will ordinary researchers and businessmen need for proper information management and unobstructed use of information retrieval systems? What problems are they likely to encounter?"
+ },
+ "6": {
+  "id": "6",
+  "text": "What possibilities are there for verbal communication between computers and humans, that is, communication via the spoken word?"
+ },
+ "7": {
+  "id": "7",
+  "text": "Describe presently working and planned systems for publishing and printing original papers by computer, and then saving the byproduct, articles coded in data-processing form, for further use in retrieval."
+ },
+ "8": {
+  "id": "8",
+  "text": "Describe information retrieval and indexing in other languages. What bearing does it have on the science in general?"
+ },
+ "9": {
+  "id": "9",
+  "text": "What possibilities are there for automatic grammatical and contextual analysis of articles for inclusion in an information retrieval system?"
+ },
+ "10": {
+  "id": "10",
+  "text": "The use of abstract mathematics in information retrieval, e.g. group theory."
+ },
+ "11": {
+  "id": "11",
+  "text": "What is the need for information consolidation, evaluation, and retrieval in scientific research?"
+ },
+ "12": {
+  "id": "12",
+  "text": "Give methods for high speed publication, printing, and distribution of scientific journals."
+ },
+ "13": {
+  "id": "13",
+  "text": "What criteria have been developed for the objective evaluation of information retrieval and dissemination systems?"
+ },
+ "14": {
+  "id": "14",
+  "text": "What future is there for automatic medical diagnosis?"
+ },
+ "15": {
+  "id": "15",
+  "text": "How much do information retrieval and dissemination systems, as well as automated libraries, cost? Are they worth it to the researcher and to industry?"
+ }
+}
