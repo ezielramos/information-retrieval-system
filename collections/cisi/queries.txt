@@ -1,0 +1,10 @@
+What is the usual relevance of the content of articles to their titles?
+How can actually pertinent data, as opposed to references or entire articles themselves, be retrieved automatically in response to information requests?
+What is information science?  Give definitions where possible.
+Image recognition and any other methods of automatically transforming printed text into computer-ready form.
+What problems are they likely to encounter?
+What possibilities are there for verbal communication between computers and humans, that is, communication via the spoken word?
+Describe presently working and planned systems for publishing and printing original papers by computer, and then saving the byproduct, articles coded in data-processing form, for further use in retrieval.
+Describe information retrieval and indexing in other languages.
+What possibilities are there for automatic grammatical and contextual analysis of articles for inclusion in an information retrieval system?
+The use of abstract mathematics in information retrieval, e.g. group theory.
