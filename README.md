@@ -26,13 +26,12 @@ Para ejecutar nuestro proyecto es necesario escribir las siguientes líneas desd
 
 ```bash
 cd src/
-python3 main.py
+make run
 ```
 
 Además, proveemos un `makefile` con las siguientes funcionalidades:
 
 ```text
-main                           Compiling the project :)
 run                            Run the project ;)
 info                           Display project description
 version                        Show the project version
