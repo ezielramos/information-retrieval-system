@@ -1,60 +1,96 @@
-from printer.welcome import welcome
-from printer.app_info import app_info
-from printer.choose_collection import choose_collection
-from printer.developments_info import developments_info
+import streamlit as st
 
-from cranfield.cranfield import cranfield
-from cranfield.cranfield_manual_query import cranfield_manual_query
+from boolean.boolean_model import *
 
-from cisi.cisi import cisi
-from cisi.cisi_manual_query import cisi_manual_query
+from vectorial.cranfield.cranfield import *
+from vectorial.cranfield.cranfield_manual_query import *
+from vectorial.cisi.cisi import *
+from vectorial.cisi.cisi_manual_query import *
 
-def analyser_cranfield():
-    cranfield()
+from crawler.wiki_crawler import WikiCrawler
 
-def analyser_cranfield_manual_query():
-    print('\nEscriba la consulta deseada:', end=' ')
-    query = input()
+st.title('BIENVENIDO AL SISTEMA DE RECUPERACIÓN DE INFORMACIÓN') 
+st.header('Escoja la opción deseada:')
 
-    cranfield_manual_query(query)
+option = 0
 
-def analyser_cisi():
-    cisi()
+status = st.radio('', ('Procesar las consultas de la colección de datos', 
+                        'Realizar una consulta nueva sobre la colección de datos', 
+                        'Hacer web scrapper', 
+                        'Imprimir la información de los desarrolladores', 
+                        'Imprimir la información de la aplicación'))
 
-def analyser_cisi_manual_query():
-    print('\nEscriba la consulta deseada:', end=' ')
-    query = input()
+if status == 'Procesar las consultas de la colección de datos':
+    option = 1
+elif status == 'Realizar una consulta nueva sobre la colección de datos':
+    option = 2
+elif status == 'Hacer web scrapper':
+    option = 3
+elif status == 'Imprimir la información de los desarrolladores':
+    option = 4
+elif status == 'Imprimir la información de la aplicación':
+    option = 5
 
-    cisi_manual_query(query)
+if option == 1:
+    st.header('Solo hay consultas personalizadas para el modelo vectorial')
+    st.subheader('Escoja la colección de datos deseada')
+    corpus = st.radio('', ('CRANFIELD', 'CISI'))
 
-def main():
+    if corpus == 'CRANFIELD':
+        if st.button('Aceptar'):
+            cranfield_app()
+            st.success('Terminado exitosamente!')
+    else:
+        if st.button('Aceptar'):
+            cisi_app()
+            st.success('Terminado exitosamente!')
 
-    while True:
+elif option == 2:
+    st.header('Escoja el modelo a desarrollar')
+    model = st.radio('', ('Booleano', 'Vectorial'))
 
-        option = welcome()
+    if model == 'Booleano':
+        st.header('Escoja la colección de datos deseada')
+        corpus = st.radio('', ('CRANFIELD', 'CISI'))
 
-        if option == 1:
-            collection = choose_collection()
-            if collection == 1:
-                cranfield()
-            else:
-                cisi()
-
-        elif option == 2:
-            collection = choose_collection()
-            if collection == 1:
-                analyser_cranfield_manual_query()
-            else:
-                analyser_cisi_manual_query()
-
-        elif option == 3:
-            developments_info()
-
-        elif option == 4:
-            app_info()
-
+        if corpus == 'CRANFIELD':
+            booleanModel('../collections/cranfield/cran.all.1400')
         else:
-            return
+            booleanModel('../collections/cisi/cisi.all')
+    else:
+        st.header('Escoja la colección de datos deseada')
+        corpus = st.radio('', ('CRANFIELD', 'CISI'))
 
-if __name__ == '__main__':
-    main()
+        if corpus == 'CRANFIELD':
+            st.subheader('Escriba la consulta deseada')
+            query = st.text_input(' ', ' ')
+
+            if st.button('Aceptar'):
+                cranfield_manual_query_app(query)
+                st.success('Terminado exitosamente!')
+        elif corpus == 'CISI':
+            st.subheader('Escriba la consulta deseada')
+            query = st.text_input(' ', ' ')
+
+            if st.button('Aceptar'):
+                cisi_manual_query_app(query)
+                st.success('Terminado exitosamente!')
+        else:
+            pass
+
+elif option == 3:
+    st.header('Haciendo web crawler a sitios aleatorios de la wikipedia')
+    WikiCrawler().crawl(10)
+
+    st.success('Terminado exitosamente!')
+
+elif option == 4:
+    st.header('Información de los Desarrolladores')
+    st.write('Nombre y Apellidos : Thalia Blanco Figueras , Correo : lia.blanco98@gmail.com , Grupo : C512')
+    st.write('Nombre y Apellidos : Eziel Ramos Piñón , Correo : e.ramos@estudiantes.matcom.uh.cu , Grupo : C511')
+    st.write('Nombre y Apellidos : Ariel Plasencia Díaz , Correo : arielplasencia00@gmail.com , Grupo : C512')
+
+else:
+    st.header('Información de la Aplicación')
+    st.write('Sistema de Recuperación de Información v2.0')
+    st.write('Copyright © 2022: Thalia Blanco, Eziel Ramos, Ariel Plasencia')
