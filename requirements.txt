@@ -1,6 +1,4 @@
 bs4
-json
-math
 nltk
 numpy
-collections
+streamlit
