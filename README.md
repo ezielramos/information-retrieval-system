@@ -5,7 +5,7 @@
 | **Nombre(s) y Apellidos** |            **Correo**            | **Grupo** |
 | :-----------------------: | :------------------------------: | :-------: |
 |  Thalia Blanco Figueras   |      lia.blanco98@gmail.com      |   C-512   |
-|     Eziel Ramos Piñón     |     ezielramos498@gmail.com      |   C-511   |
+|    Eziel C. Ramos Piñón   |     ezielramos498@gmail.com      |   C-511   |
 |   Ariel Plasencia Díaz    |    arielplasencia00@gmail.com    |   C-512   |
 
 ## Implementación y Ejecución
