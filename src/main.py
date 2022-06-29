@@ -1,4 +1,4 @@
-import streamlit as st
+﻿import streamlit as st
 
 from boolean.boolean_model import *
 
@@ -16,7 +16,7 @@ option = 0
 
 status = st.radio('', ('Procesar las consultas de la colección de datos', 
                         'Realizar una consulta nueva sobre la colección de datos', 
-                        'Hacer web scrapper', 
+                        'Hacer wiki crawler', 
                         'Imprimir la información de los desarrolladores', 
                         'Imprimir la información de la aplicación'))
 
@@ -24,7 +24,7 @@ if status == 'Procesar las consultas de la colección de datos':
     option = 1
 elif status == 'Realizar una consulta nueva sobre la colección de datos':
     option = 2
-elif status == 'Hacer web scrapper':
+elif status == 'Hacer wiki crawler':
     option = 3
 elif status == 'Imprimir la información de los desarrolladores':
     option = 4
@@ -80,14 +80,17 @@ elif option == 2:
 
 elif option == 3:
     st.header('Haciendo web crawler a sitios aleatorios de la wikipedia')
-    WikiCrawler().crawl(10)
+    done = WikiCrawler().crawl(10)
 
-    st.success('Terminado exitosamente!')
+    if done:
+        st.success('Terminado exitosamente!')
+    else:
+        st.error('Error!')
 
 elif option == 4:
     st.header('Información de los Desarrolladores')
     st.write('Nombre y Apellidos : Thalia Blanco Figueras , Correo : lia.blanco98@gmail.com , Grupo : C512')
-    st.write('Nombre y Apellidos : Eziel Ramos Piñón , Correo : e.ramos@estudiantes.matcom.uh.cu , Grupo : C511')
+    st.write('Nombre y Apellidos : Eziel C. Ramos Piñón , Correo : ezielramos498@gmail.com , Grupo : C511')
     st.write('Nombre y Apellidos : Ariel Plasencia Díaz , Correo : arielplasencia00@gmail.com , Grupo : C512')
 
 else:
