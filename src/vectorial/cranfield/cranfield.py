@@ -285,7 +285,7 @@ def cranfield_app():
 
     # list of list of relevant document numbers for all documents
     query_rel = []
-    for i in range(1, 11):
+    for i in range(1, 24):
         rel_list = rel[rel['query_path'] == i]['relevance'].to_list()
         
         # append list rel_list to list of list query_list
