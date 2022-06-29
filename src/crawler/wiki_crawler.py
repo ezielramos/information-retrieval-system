@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.request import urlopen
 from bs4 import BeautifulSoup, ResultSet, PageElement
 
+
 class WikiCrawler:
 
     def __init__(self):
@@ -51,7 +52,7 @@ class WikiCrawler:
         Get all links in page and adds it to self.links
         '''
         # get the main body text
-        body = page.find('div', {'id':'mw-content-text'})
+        body = page.find('div', {'id': 'mw-content-text'})
 
         paragraphs = body.findChildren(['p', 'ul', 'li'])
         for p in paragraphs:
@@ -80,23 +81,30 @@ class WikiCrawler:
         self.documents[title] = summary_text
 
     def crawl(self, n=20):
-        for _ in range(n):
-            if len(self.links) == 0:
-                self.links.append(self.get_random_page())
-            link = self.links.pop()
-            page = self.go_to_link(link)
-            self.get_document_info(page)
-            self.get_links(page)
+        try:
+            for _ in range(n):
+                if len(self.links) == 0:
+                    self.links.append(self.get_random_page())
+                link = self.links.pop()
+                page = self.go_to_link(link)
+                self.get_document_info(page)
+                self.get_links(page)
 
-        self.save_documents()
-
-        st.write(self.documents)
+            self.save_documents()
+            st.write(self.documents)
+            return True
+        except:
+            st.write('Error de conexión')
+            return False
 
     def save_documents(self):
         try:
-            json.dump(self.documents, open(Path('wiki_docs.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+            json.dump(self.documents, open(Path(
+                '../collections/wiki_docs.json'), 'w', encoding='utf-8'), ensure_ascii=False)
         except FileNotFoundError:
-            json.dump(self.documents, open(Path('wiki_docs.json'), 'x', encoding='utf-8'), ensure_ascii=False)
+            json.dump(self.documents, open(Path(
+                '../collections/wiki_docs.json'), 'x', encoding='utf-8'), ensure_ascii=False)
+
 
 if __name__ == '__main__':
     WikiCrawler().crawl(10)
