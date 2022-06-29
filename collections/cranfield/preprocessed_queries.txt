@@ -1,4 +1,3 @@
-investig made wave system creat static pressur distribut liquid surfac
 anyon investig effect shock gener vortic heat transfer blunt bodi
 heat transfer blunt bodi absenc vortic
 gener effect flow field reynold number small
@@ -8,3 +7,17 @@ anyon investig shear buckl stiffen plate
 paper shear buckl unstiffen rectangular plate shear
 practic close realiti assumpt flow hyperson shock tube use nitrogen non viscou thermodynam equilibrium
 design factor use control lift drag ratio mach number
+real transport properti air avail wide rang enthalpi densiti
+possibl find analyt similar solut strong blast wave problem newtonian approxim
+aerodynam perform channel flow ground effect machin calcul
+experiment pressur distribut bodi revolut angl attack avail
+anyon formal determin influenc joul heat produc induc current magnetohydrodynam free convect flow gener condit
+progress made research unsteadi aerodynam
+factor influenc time requir invert larg structur matric
+effect cross section shape flow simpl delta wing sharp lead edg
+find approxim correct thick slender thin wing theori
+wind tunnel interfer effect investig systemat basi
+anyon investig relax effect gaseou heat transfer suddenli heat wall
+theoret method predict base pressur
+one detect transit phenomena boundari layer
+one detect transit phenomena hyperson wake

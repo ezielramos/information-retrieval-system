@@ -1,4 +1,3 @@
-what investigations have been made of the wave system created by a static pressure distribution over a liquid surface .
 has anyone investigated the effect of shock generated vorticity on heat transfer to a blunt body .
 what is the heat transfer to a blunt body in the absence of vorticity .
 what are the general effects on flow fields when the reynolds number is small .
@@ -8,3 +7,17 @@ has anyone investigated the shear buckling of stiffened plates .
 papers on shear buckling of unstiffened rectangular plates under shear .
 in practice, how close to reality are the assumptions that the flow in a hypersonic shock tube using nitrogen is non-viscous and in thermodynamic equilibrium .
 what design factors can be used to control lift-drag ratios at mach numbers above 5 .
+are real-gas transport properties for air available over a wide range of enthalpies and densities .
+is it possible to find an analytical,  similar solution of the strong blast wave problem in the newtonian approximation .
+how can the aerodynamic performance of channel flow ground effect machines be calculated .
+are experimental pressure distributions on bodies of revolution at angle of attack available .
+has anyone formally determined the influence of joule heating,  produced by the induced current,  in magnetohydrodynamic free convection flows under general conditions .
+what progress has been made in research on unsteady aerodynamics .
+what are the factors which influence the time required to invert large structural matrices .
+what is the effect of cross sectional shape on the flow over simple delta wings with sharp leading edges .
+to find an approximate correction for thickness in slender thin-wing theory .
+have wind tunnel interference effects been investigated on a systematic basis .
+has anyone investigated relaxation effects on gaseous heat transfer to a suddenly heated wall .
+are there any theoretical methods for predicting base pressure .
+how can one detect transition phenomena in boundary layers .
+how can one detect transition phenomena in hypersonic wakes .
